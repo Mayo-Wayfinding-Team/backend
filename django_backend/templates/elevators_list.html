@@ -8,7 +8,7 @@
     <h1>Elevators List</h1>
     <ul>
         {% for elevator in elevators %}
-            <li>Elevator: {{ elevator.elevatornum }} - Distance to Door: {{ elevator.disttodoor }}</li>
+            <li>Elevator Num: {{ elevator.elevatornum }} - Closest Door: {{ elevator.closestdoor }}</li>
         {% endfor %}
     </ul>
 </body>
