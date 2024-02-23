@@ -1,3 +1,5 @@
+# serializers for both models
+
 from rest_framework import serializers
 from .models import Department, Elevators
 

@@ -20,6 +20,4 @@ from . import views
 urlpatterns = [
     path('departments/', views.departments_list, name='departments_list'),
     path('elevators/', views.elevators_list, name='elevators_list'),
-    path('api/departments/', views.DepartmentListAPIView.as_view(), name='api_department_list'),
-    path('api/elevators/', views.ElevatorsListAPIView.as_view(), name='api_elevators_list'),
 ]
