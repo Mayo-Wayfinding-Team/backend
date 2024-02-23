@@ -9,6 +9,7 @@
   ```
   pip install mysqlclient
   ```
+- in the settings.py file enter your mySQL username and password
 - Cd into django project
   ```
   cd django_backend
