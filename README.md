@@ -18,6 +18,10 @@
   ```
   python manage.py migrate django_backend
   ```
+  (optional) apply migrations
+  ```
+  python manage.py makemigrate django_backend
+  ```
 - run the server you can change the port by adding port number after this such as 8001
   ```
   python manage.py runserver
