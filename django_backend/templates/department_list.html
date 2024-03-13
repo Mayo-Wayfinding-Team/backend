@@ -8,7 +8,7 @@
     <h1>Department List</h1>
     <ul>
         {% for department in departments %}
-            <li>{{ department.departmentname }} - Floor: {{ department.floor }} - Closest elevator: {{ department.closestelevatornum }}</li>
+            <li>{{ department.departmentname }} - Floor: {{ department.floor }} - Closest elevator: {{ department.closestelevatornum }} - Desk: {{ department.desk }}</li>
         {% endfor %}
     </ul>
 </body>
