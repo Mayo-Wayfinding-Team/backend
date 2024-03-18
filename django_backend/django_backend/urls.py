@@ -21,4 +21,5 @@ urlpatterns = [
     path('departments/', views.departments_list, name='departments_list'),
     path('elevators/', views.elevators_list, name='elevators_list'),
     path('doors/', views.doors_list, name='doors_list'),
+    path('get-steps/<str:department_name>/', views.get_steps, name='get-steps'),
 ]
