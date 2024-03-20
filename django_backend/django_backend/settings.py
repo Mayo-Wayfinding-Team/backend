@@ -10,6 +10,11 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -20,12 +25,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-v!o487ej1f5c9lomo2i12_xv_r5-77rrwzn8evsz721s=^m5$t'
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -81,11 +86,10 @@ WSGI_APPLICATION = 'django_backend.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'mayo_wayfinding',      
-        'USER': '',               # Replace with your MySQL username
-        'PASSWORD': '',          # Replace with your MySQL password
-        'HOST': 'localhost',               # default host replace if not hosting with localhost
-        'PORT': '3306',                    # default port replace if not using default mysql port
+        'NAME': os.environ.get('DB_NAME'),      
+        'USER': os.environ.get('DB_USER'),               # Replace with your MySQL username
+        'PASSWORD': os.environ.get('DB_PASSWORD'),          # Replace with your MySQL password
+        'HOST': os.environ.get('DB_HOST'),               # default host replace if not hosting with localhost
     }
 }
 
