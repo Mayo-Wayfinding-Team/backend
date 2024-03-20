@@ -1,0 +1,15 @@
+<!-- Basic html template to display the 'Elevator' table data from the models -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Elevators List</title>
+</head>
+<body>
+    <h1>Elevators List</h1>
+    <ul>
+        {% for elevator in elevators %}
+            <li>Elevator Num: {{ elevator.elevatornum }} - Closest Door: {{ elevator.closestdoor }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

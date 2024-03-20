@@ -1,0 +1,16 @@
+<!-- Basic html template to display the 'doors' table data from the models -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Doors List</title>
+</head>
+<body>
+    <h1>Doors List</h1>
+    <ul>
+        {% for door in doors %}
+            <li>Door: {{ door.doornum }} - Closest Parking Lot: {{ door.closestparkinglot }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
+

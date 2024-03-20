@@ -1,0 +1,16 @@
+<!-- Basic html template to display the 'Department' table data from the models -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Department List</title>
+</head>
+<body>
+    <h1>Department List</h1>
+    <ul>
+        {% for department in departments %}
+            <li>{{ department.departmentname }} - Floor: {{ department.floor }} - Closest elevator: {{ department.closestelevatornum }} - Desk: {{ department.desk }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
+
