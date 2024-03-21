@@ -10,6 +10,7 @@ RUN pip install django
 RUN pip install mysqlclient
 RUN pip install django-autoreload
 RUN pip install python-dotenv
+RUN pip install django-cors-headers
 
 # Copy the backend code into the container at /backend
 COPY /django_backend/ /backend
