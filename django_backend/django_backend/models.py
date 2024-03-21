@@ -12,7 +12,7 @@ class Department(models.Model):
 
     class Meta:
         managed = False
-        db_table = 'department'
+        db_table = 'Department'
 
 class Door(models.Model):
     doornum = models.IntegerField(db_column='DoorNum', primary_key=True)  
@@ -20,7 +20,7 @@ class Door(models.Model):
 
     class Meta:
         managed = False
-        db_table = 'door'
+        db_table = 'Door'
 
 class Elevators(models.Model):
     elevatornum = models.IntegerField(db_column='ElevatorNum', primary_key=True)
@@ -28,4 +28,4 @@ class Elevators(models.Model):
 
     class Meta:
         managed = False
-        db_table = 'elevators'
+        db_table = 'Elevators'

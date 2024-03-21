@@ -17,6 +17,13 @@ def doors_list(request):
     doors = Door.objects.all()
     return render(request, 'door_list.html', {'doors': doors})
 
+def department_names(request):
+    department_names = Department.objects.values_list('departmentname', flat=True)
+    # Convert queryset to a list
+    department_names_list = list(department_names)
+    # Return JSON response
+    return JsonResponse(department_names_list, safe=False)
+
 def get_steps(request, department_name):
     try:
         department = get_object_or_404(Department, departmentname=department_name)
