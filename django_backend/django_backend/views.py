@@ -70,7 +70,8 @@ def get_closest_parking_lot(request, closest_door):
     except Exception as e:
         return None
 
-def generate_steps(request, department_name):
+# no start point
+def generate_steps_nsp(request, department_name):
     try:
         department = get_department(request, department_name)
         closest_door = get_closest_door(request, department_name)
@@ -89,7 +90,31 @@ def generate_steps(request, department_name):
             steps.append(f'Walk to elevator {department.closestelevatornum}')
             steps.append(f'Check in at desk {department.desk} for your appointment in {department.departmentname}')
 
-        return JsonResponse({'steps': steps})
+        return JsonResponse(steps, safe=False)
+    except Exception as e:
+        return JsonResponse({'error': str(e)}, status=500)
+
+# no start point 
+def unity_steps_nsp(request, department_name):
+    try:
+        department = get_department(request, department_name)
+        closest_door = get_closest_door(request, department_name)
+        closest_parking_lot_id = get_closest_parking_lot(request, closest_door)
+
+        unity_steps =  []
+
+        if(department.floor == 1):
+            unity_steps.append(closest_parking_lot_id)
+            unity_steps.append(closest_door)
+            unity_steps.append(department.desk)
+        
+        if(department.floor == 2):
+            unity_steps.append(closest_parking_lot_id)
+            unity_steps.append(closest_door)
+            unity_steps.append(department.closestelevatornum)
+            unity_steps.append(department.desk)
+        
+        return JsonResponse(unity_steps, safe=False)
     except Exception as e:
         return JsonResponse({'error': str(e)}, status=500)
 
