@@ -9,6 +9,7 @@ class Department(models.Model):
     floor = models.IntegerField(db_column='Floor')  
     closestelevatornum = models.IntegerField(db_column='ClosestElevatorNum', blank=True, null=True) 
     desk = models.CharField(db_column='Desk', max_length=255, blank=True, null=True) 
+    closestdoorfloor1 = models.IntegerField(db_column='ClosestDoorFloor1', blank=True, null=True)
 
     class Meta:
         managed = False
