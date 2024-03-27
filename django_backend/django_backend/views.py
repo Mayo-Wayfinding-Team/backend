@@ -70,7 +70,7 @@ def get_closest_parking_lot(request, closest_door):
     except Exception as e:
         return None
 
-# no start point
+# no start point front end
 def generate_steps_nsp(request, department_name):
     try:
         department = get_department(request, department_name)
@@ -79,12 +79,12 @@ def generate_steps_nsp(request, department_name):
 
         steps = []
 
-        if(department.floor == 1):
+        if department.floor == 1:
             steps.append(f'Park in Parking Lot {closest_parking_lot_id}')
             steps.append(f'Enter through door {closest_door}')
             steps.append(f'Check in at desk {department.desk} for your appointment in {department.departmentname}')
         
-        if(department.floor == 2):
+        if department.floor == 2:
             steps.append(f'Park in Parking Lot {closest_parking_lot_id}')
             steps.append(f'Enter through door {closest_door}')
             steps.append(f'Walk to elevator {department.closestelevatornum}')
@@ -94,7 +94,7 @@ def generate_steps_nsp(request, department_name):
     except Exception as e:
         return JsonResponse({'error': str(e)}, status=500)
 
-# no start point 
+# no start point unity
 def unity_steps_nsp(request, department_name):
     try:
         department = get_department(request, department_name)
@@ -103,18 +103,72 @@ def unity_steps_nsp(request, department_name):
 
         unity_steps =  []
 
-        if(department.floor == 1):
+        if department.floor == 1:
             unity_steps.append(closest_parking_lot_id)
             unity_steps.append(closest_door)
             unity_steps.append(department.desk)
         
-        if(department.floor == 2):
+        if department.floor == 2:
             unity_steps.append(closest_parking_lot_id)
             unity_steps.append(closest_door)
             unity_steps.append(department.closestelevatornum)
             unity_steps.append(department.desk)
         
         return JsonResponse(unity_steps, safe=False)
+    except Exception as e:
+        return JsonResponse({'error': str(e)}, status=500)
+
+# department to department front end
+def generate_steps_dd(request, start_point, destination):
+    try:
+        department_sp = get_department(request, start_point)
+        department_d = get_department(request, destination)
+
+        steps = []
+
+        if department_sp.floor == 1:
+            if department_d.floor == 1:
+                steps.append("departments on the same floor")
+            if department_d.floor == 2:
+                steps.append(f'from desk {department_sp.desk} walk to elevator {department_d.closestelevatornum}')
+                steps.append(f'from elevator {department_d.closestelevatornum} walk to desk {department_d.desk}')
+
+        if department_sp.floor == 2:
+            if department_d.floor == 1:
+                steps.append(f'from desk {department_sp.desk} walk to elevator {department_sp.closestelevatornum}')
+                steps.append(f'from elevator {department_sp.closestelevatornum} walk to desk {department_d.desk}')
+            if department_d.floor == 2:
+                steps.append("departments on the same floor")
+
+        return JsonResponse(steps, safe=False)
+    except Exception as e:
+        return JsonResponse({'error': str(e)}, status=500)
+
+# department to department unity     
+def unity_steps_dd(request, start_point, destination):
+    try:
+        department_sp = get_department(request, start_point)
+        department_d = get_department(request, destination)
+
+        steps = []
+
+        if department_sp.floor == 1:
+            if department_d.floor == 1:
+                steps.append("departments on the same floor")
+            if department_d.floor == 2:
+                steps.append(department_sp.desk)
+                steps.append(department_d.closestelevatornum)
+                steps.append(department_d.desk)
+
+        if department_sp.floor == 2:
+            if department_d.floor == 1:
+                steps.append(department_sp.desk)
+                steps.append(department_sp.closestelevatornum)
+                steps.append(department_d.desk)
+            if department_d.floor == 2:
+                steps.append("departments on the same floor")
+
+        return JsonResponse(steps, safe=False)
     except Exception as e:
         return JsonResponse({'error': str(e)}, status=500)
 
