@@ -88,6 +88,7 @@ def generate_steps_nsp(request, department_name):
             steps.append(f'Park in Parking Lot {closest_parking_lot_id}')
             steps.append(f'Enter through door {closest_door}')
             steps.append(f'Walk to elevator {department.closestelevatornum}')
+            steps.append(f'Take the elevator to floor {department.floor}')
             steps.append(f'Check in at desk {department.desk} for your appointment in {department.departmentname}')
 
         return JsonResponse(steps, safe=False)
@@ -131,11 +132,13 @@ def generate_steps_dd(request, start_point, destination):
                 steps.append("departments on the same floor")
             if department_d.floor == 2:
                 steps.append(f'from desk {department_sp.desk} walk to elevator {department_d.closestelevatornum}')
+                steps.append(f'Take the elevator to floor {department_d.floor}')
                 steps.append(f'from elevator {department_d.closestelevatornum} walk to desk {department_d.desk}')
 
         if department_sp.floor == 2:
             if department_d.floor == 1:
                 steps.append(f'from desk {department_sp.desk} walk to elevator {department_sp.closestelevatornum}')
+                steps.append(f'Take the elevator to floor {department_d.floor}')
                 steps.append(f'from elevator {department_sp.closestelevatornum} walk to desk {department_d.desk}')
             if department_d.floor == 2:
                 steps.append("departments on the same floor")
