@@ -21,6 +21,13 @@ urlpatterns = [
     path('departments/', views.departments_list, name='departments_list'),
     path('elevators/', views.elevators_list, name='elevators_list'),
     path('doors/', views.doors_list, name='doors_list'),
-    path('get-steps/<str:department_name>/', views.get_steps, name='get-steps'),
-    path('department-names/', views.department_names, name='departments')
+    # path('get-steps/<str:department_name>/', views.get_steps, name='get-steps'),
+    path('department-names/', views.department_names, name='departments'),
+    path('get_department/<str:department_name>/', views.get_department, name='get_department'),
+    path('closest_door/<str:department_name>/', views.get_closest_door, name='get_closest_door'),
+    path('closest_parking_lot/<str:department_name>/<int:closest_door>/', views.get_closest_parking_lot, name='get_closest_parking_lot'),
+    path('generate_steps_nsp/<str:department_name>/', views.generate_steps_nsp, name='generate_steps_nsp'),
+    path('unity_steps_nsp/<str:department_name>/', views.unity_steps_nsp, name='unity_steps'),
+    path('generate_steps_dd/<str:start_point>/<str:destination>/', views.generate_steps_dd, name='generate_steps_dd'),
+    path('unity_steps_dd/<str:start_point>/<str:destination>/', views.unity_steps_dd, name='unity_steps_dd')
 ]

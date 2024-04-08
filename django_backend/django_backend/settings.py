@@ -91,9 +91,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': os.environ.get('DB_NAME'),      
-        'USER': os.environ.get('DB_USER'),               # Replace with your MySQL username
-        'PASSWORD': os.environ.get('DB_PASSWORD'),          # Replace with your MySQL password
-        'HOST': os.environ.get('DB_HOST'),               # default host replace if not hosting with localhost
+        'USER': os.environ.get('DB_USER'),               
+        'PASSWORD': os.environ.get('DB_PASSWORD'),          
+        'HOST': os.environ.get('DB_HOST'),               
     }
 }
 
