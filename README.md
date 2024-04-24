@@ -64,7 +64,7 @@
    CREATE DATABASE your_database_name;
    ```
    Replace your_database_name with the desired name for your new database.
-3. Select DatabaseOnce connected, select the database you want to use:
+3. Select Database. Once connected, select the database you want to use:
    ```
    USE your_database_name;
    ```
