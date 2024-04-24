@@ -29,6 +29,7 @@
         }
     }
     ```
+   Replace your_database_name, your_mysql_username, and your_mysql_password with their respective information.
 5. Navigate to Django Project Directory
    ```
    cd django_backend
